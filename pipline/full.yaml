@@ -1,0 +1,57 @@
+pipline:
+  - name: 关键词->选择题
+    template_id: 0
+    fewshot_num: 5
+    generate_num: 3
+    retry: False # if use retry the true generate_num will be set to 1, but do origial generate_num times.
+    mode: use_prompt
+    filter: 
+    outfile: "select"
+  - name: 选择题->知识点
+    template_id: 1
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_prompt
+    filter: 
+    outfile: "know"
+  - name: 知识点->选择题
+    template_id: 2
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_prompt
+    filter: 
+    outfile: "select"
+  - name: 选择题->知识点
+    template_id: 1
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_prompt
+    filter: 
+    outfile: "know"
+  - name: 知识点->选择题
+    template_id: 2
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_prompt
+    filter: 
+    outfile: "select"
+  - name: 选择题->语料
+    template_id: 3
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_prompt
+    filter: 
+    outfile: "corpus"
+  - name: 语料->指令
+    template_id: 4
+    fewshot_num: 5
+    generate_num: 3
+    retry: False
+    mode: use_instruct
+    filter: 
+    outfile: "sft"
